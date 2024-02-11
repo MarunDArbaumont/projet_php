@@ -21,7 +21,7 @@
           if ($_SESSION['id_user'] = $_POST['author_id']){ ?> <!-- Si le author_id du message est égal au id_user alors le bouton modifier aparait à coté du message -->
             <li> <?php echo $message->message;  ?> <a action='index.php?action=modify_message'>Modifier le message</a> </li>
           <?php} else{ ?>
-        <li> <?php echo $message->message;  ?></li> <!-- Si non affiche les messages -->
+        <li> <?php echo $_POST['author_id'].' : '.$message->message;  ?></li> <!-- Si non affiche les messages -->
         <?php }  ?>
         </ul>
       <?php }  ?>
@@ -30,9 +30,9 @@
 
 
 
-    <!-- pour ajouter le concept de modification de message
+    <!-- pour ajouter le concept poster un commentaore
 
-    - Savoir que le message appartient à l'utilisateur connecté
-    - Afficher la possibilité de modifier le message
-    - Envoyer vers une page de modification de message
-    - re poster le message ou juste le modifier dans la bdd -->
+    - ajouter un bouton pour poster un commentaire
+    - ajouter en bdd le commentaire qui sera associer au message (ajouter une colone commentaire)
+    - afficher le commentaire en dessous du message <ul> dans le <ul> du message
+  -->
