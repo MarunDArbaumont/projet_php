@@ -17,22 +17,22 @@
       <?php if (!empty($messages)) { ?>
         Messages :<br>
         <ul>
-        <?php foreach ($messages as $message) { ?>
-        <li> <?php echo $message->message;  ?></li>
+        <?php foreach ($messages as $message) {
+          if ($_SESSION['id_user'] = $_POST['author_id']){ ?> <!-- Si le author_id du message est égal au id_user alors le bouton modifier aparait à coté du message -->
+            <li> <?php echo $message->message;  ?> <a action='index.php?action=modify_message'>Modifier le message</a> </li>
+          <?php} else{ ?>
+        <li> <?php echo $message->message;  ?></li> <!-- Si non affiche les messages -->
         <?php }  ?>
         </ul>
       <?php }  ?>
-    <?php }  ?>
+    <?php }} ?>
 
 
 
-<!--
-    pour ajouter le concept de message
 
-    - ajouter un formulaire qui pointe vers une action du controller
-    - creer la table
-    - creer la classe fille dans table.class.php
-    - enregister le message en BDD dans une action du controller
-    - creer une vue dans le dossier 'views' avec le nom de l'action
-    - afficher tout les message sur la page home
--->
+    <!-- pour ajouter le concept de modification de message
+
+    - Savoir que le message appartient à l'utilisateur connecté
+    - Afficher la possibilité de modifier le message
+    - Envoyer vers une page de modification de message
+    - re poster le message ou juste le modifier dans la bdd -->
