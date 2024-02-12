@@ -68,6 +68,7 @@ elseif($action = 'post_message')
 	$user = New Message();
 	$user->author_id = $_SESSION['id_user'];
 	$user->message = $_POST['message'];
+	$user->author_name = $_SESSION['login'];
 	$user->save();
 }
 

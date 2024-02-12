@@ -18,7 +18,7 @@
         Messages :<br>
         <ul>
         <?php foreach ($messages as $message) { ?>
-        <li> <?php echo $message->author_id.' : '.$message->message;  ?></li>
+        <li> <?php echo $user->author_name.' : '.$message->message;  ?></li>
         <?php }  ?>
         </ul>
       <?php }  ?>
