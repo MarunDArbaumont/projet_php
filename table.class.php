@@ -268,3 +268,8 @@ class Message extends Table
 	protected static $tableName = 'messages';
 	protected static $primaryKey = 'id';
 }
+class Commentaire extends Table
+{
+	protected static $tableName = 'commentaires';
+	protected static $primaryKey = 'id';
+}

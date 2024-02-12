@@ -17,15 +17,18 @@
       <?php if (!empty($messages)) { ?>
         Messages :<br>
         <ul>
-        <?php foreach ($messages as $message) {
-          if ($_SESSION['id_user'] = $_POST['author_id']){ ?> <!-- Si le author_id du message est égal au id_user alors le bouton modifier aparait à coté du message -->
-            <li> <?php echo $message->message;  ?> <a action='index.php?action=modify_message'>Modifier le message</a> </li>
-          <?php} else{ ?>
-        <li> <?php echo $_POST['author_id'].' : '.$message->message;  ?></li> <!-- Si non affiche les messages -->
-        <?php }  ?>
+        <?php foreach ($messages as $message) { ?> 
+            <li> <?php echo $message->author_id.' : '.$message->message;  ?> </li> <input method="post" name='commentaire'> <a href="index.php?action=post_com">Commenter</a>
+            <ul>
+            <?php if (!empty($commentaires)) {
+             foreach($commentaires as $commentaire){?>
+              <li> <?php echo $commentaire->commentaire; ?> </li>
+              <?php } ?>
+            </ul>
+            
+              <?php } ?>
         </ul>
-      <?php }  ?>
-    <?php }} ?>
+    <?php }} }?>
 
 
 

@@ -70,6 +70,13 @@ elseif($action = 'post_message')
 	$user->message = $_POST['message'];
 	$user->save();
 }
+elseif($action = 'post_com'){
+	$user = New Commentaire();
+	$user->author_id = $_SESSION['id_user'];
+	$user->commentaire = $_POST['commentaire'];
+	$user->id_message =  $_FILES['message'];
+	$user->save();
+}
 
 // Vue
 include('template.php');
