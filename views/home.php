@@ -17,23 +17,20 @@
       <?php if (!empty($messages)) { ?>
         Messages :<br>
         <ul>
-        <?php foreach ($messages as $message) {
-          if ($_SESSION['id_user'] = $_POST['author_id']){ ?> <!-- Si le author_id du message est égal au id_user alors le bouton modifier aparait à coté du message -->
-            <li> <?php echo $message->author_id.' : '.$message->message;  ?> <a action='index.php?action=modify_message'>Modifier le message</a> </li>
-          <?php} else{ ?>
-        <li> <?php echo $message->author_id.' : '.$message->message;  ?></li> <!-- Si non affiche les messages -->
-        <?php }  ?>
+        <?php foreach ($messages as $message) { ?>
+            <li> <?php echo $message->author_id.' : '.$message->message; ?>  <a href="index.php?action=form_modify_message">modify message</a></li>
+          <?php } ?>
         </ul>
       <?php }  ?>
-    <?php }} ?>
+    <?php } ?>
 
 
 
 
     <!-- pour ajouter le concept de modification de message
 
-    - Savoir que le message appartient à l'utilisateur connecté
-    - Afficher la possibilité de modifier le message
-    - Envoyer vers une page de modification de message
-    - re poster le message ou juste le modifier dans la bdd 
+    - Savoir que le message appartient à l'utilisateur connecté       $_GET('id') = $_POST('id');
+    - Afficher la possibilité de modifier le message      
+    - Envoyer vers une page de modification de message      
+    - re poster le message ou juste le modifier dans la bdd       save()
   -->

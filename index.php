@@ -70,6 +70,14 @@ elseif($action = 'post_message')
 	$user->message = $_POST['message'];
 	$user->save();
 }
-
+elseif($action == 'form_modify_message')
+{}
+elseif($action == 'modify_message')
+{
+	// modifier le message en bdd
+	$user = Message::getOne($_POST['message']);;
+	$user->message = $_POST['message'];
+	$user->save();
+}
 // Vue
 include('template.php');
