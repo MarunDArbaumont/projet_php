@@ -18,7 +18,7 @@
         Messages :<br>
         <ul>
         <?php foreach ($messages as $message) { ?>
-        <li> <?php echo $message->message;  ?></li>
+        <li> <?php echo $message->author_id.' : '.$message->message;  ?></li>
         <?php }  ?>
         </ul>
       <?php }  ?>
@@ -27,12 +27,9 @@
 
 
 <!--
-    pour ajouter le concept de message
+    pour ajouter le nom d'utilisateur de l'auteur du message
 
-    - ajouter un formulaire qui pointe vers une action du controller
-    - creer la table
-    - creer la classe fille dans table.class.php
-    - enregister le message en BDD dans une action du controller
-    - creer une vue dans le dossier 'views' avec le nom de l'action
-    - afficher tout les message sur la page home
+    - récupérer l'id_author du message
+    - retrouver le pseudo relier à l'id author
+    - affiché le pseudo (login)
 -->
