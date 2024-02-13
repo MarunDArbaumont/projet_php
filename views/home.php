@@ -21,11 +21,13 @@
           <div>
             <h3> <?php echo $message->author_name ?> </h3>
            <p><?php echo $message->message; ?></p><a href="index.php?action=form_modify_message&id=<?php echo $message->id ?>">modify message</a>
+           <a href="index.php?action=delete&id=<?php echo $message->id; ?>">Delete</a>
           </div>
           <?php } else{ ?>
             <div>
             <h3><?php echo $message->author_name; ?></h3>
             <p><?php echo $message->message; ?></p> 
+            <a href="index.php?action=delete&id=<?php echo $message->id; ?>">Delete</a>
         </div>
           <?php } 
         }  

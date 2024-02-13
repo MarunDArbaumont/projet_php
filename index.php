@@ -87,5 +87,14 @@ elseif($action === 'modify_message')
         echo "Message ID not provided.";
     }
 }
+elseif ($action == 'delete')
+{
+    // supprimez le message de la base de données
+	$message = Message::getOne($_GET['id']);
+    $message->delete();
+	// redirigez vers la page de succès
+	header('Location: index.php?action=message_deleted');
+}
+
 // Vue
 include('template.php');

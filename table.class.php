@@ -156,6 +156,13 @@ abstract class Table
 			$this->{static::$primaryKey} = $pk_val;
 		}
 	}
+	public function delete()
+    {
+        global $bdd_host, $bdd_login, $bdd_passwd, $bdd_base;
+        $link = mysqli_connect($bdd_host, $bdd_login, $bdd_passwd, $bdd_base);
+        $query = 'DELETE FROM '.static::$tableName.' WHERE '.static::$primaryKey.' = '.$this->{static::$primaryKey};
+        $res = mysqli_query($link, $query);
+    }
 
 }
 
