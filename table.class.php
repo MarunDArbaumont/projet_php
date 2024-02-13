@@ -268,46 +268,46 @@ class Message extends Table
 	protected static $tableName = 'messages';
 	protected static $primaryKey = 'id';
 	public static function getOneById($id)
-{
-    global $bdd_host, $bdd_login, $bdd_passwd, $bdd_base;
-    
-    // Connexion à la base de données
-    $link = new mysqli($bdd_host, $bdd_login, $bdd_passwd, $bdd_base);
+	{
+		global $bdd_host, $bdd_login, $bdd_passwd, $bdd_base;
+		
+		// Connexion à la base de données
+		$link = new mysqli($bdd_host, $bdd_login, $bdd_passwd, $bdd_base);
 
-    // Vérification de la connexion
-    if ($link->connect_error) {
-        die("Connection failed: " . $link->connect_error);
-    }
-    
-    // Préparation de la requête
-    $query = "SELECT * FROM messages WHERE id = ?";
-    $stmt = $link->prepare($query);
-    
-    // Liaison des paramètres
-    $stmt->bind_param("i", $id); // 'i' indique le type de paramètre (integer)
+		// Vérification de la connexion
+		if ($link->connect_error) {
+			die("Connection failed: " . $link->connect_error);
+		}
+		
+		// Préparation de la requête
+		$query = "SELECT * FROM messages WHERE id = ?";
+		$stmt = $link->prepare($query);
+		
+		// Liaison des paramètres
+		$stmt->bind_param("i", $id); // 'i' indique le type de paramètre (integer)
 
-    // Exécution de la requête
-    $stmt->execute();
-    
-    // Récupération des résultats
-    $result = $stmt->get_result();
-    
-    // Vérification du nombre de lignes retournées
-    if ($result->num_rows == 1) {
-        // Récupération de la ligne
-        $row = $result->fetch_assoc();
-        // Fermeture du statement
-        $stmt->close();
-        // Fermeture de la connexion
-        $link->close();
-        return $row;
-    } else {
-        // Fermeture du statement
-        $stmt->close();
-        // Fermeture de la connexion
-        $link->close();
-        return null;
-    }
-}
+		// Exécution de la requête
+		$stmt->execute();
+		
+		// Récupération des résultats
+		$result = $stmt->get_result();
+		
+		// Vérification du nombre de lignes retournées
+		if ($result->num_rows == 1) {
+			// Récupération de la ligne
+			$row = $result->fetch_assoc();
+			// Fermeture du statement
+			$stmt->close();
+			// Fermeture de la connexion
+			$link->close();
+			return $row;
+		} else {
+			// Fermeture du statement
+			$stmt->close();
+			// Fermeture de la connexion
+			$link->close();
+			return null;
+		}
+	}
 
 }
