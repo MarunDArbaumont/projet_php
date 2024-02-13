@@ -16,13 +16,20 @@
 
       <?php if (!empty($messages)) { ?>
         Messages :<br>
-        <ul>
-        <?php foreach ($messages as $message) { ?>
-            <li> <?php echo $message->author_id.' : '.$message->message; ?>  <a href="index.php?action=form_modify_message">modify message</a></li>
-          <?php } ?>
-        </ul>
-      <?php }  ?>
-    <?php } ?>
+        <?php foreach ($messages as $message) { 
+          if($_SESSION['id_user'] === $message->author_id){ ?>
+          <div>
+            <h3> <?php echo $message->author_name ?> </h3>
+           <p><?php echo $message->message; ?></p><a href="index.php?action=form_modify_message">modify message</a>
+          </div>
+          <?php } else{ ?>
+            <div>
+            <h3><?php echo $message->author_name; ?></h3>
+            <p><?php echo $message->message; ?></p> 
+        </div>
+          <?php } 
+        }  
+    }} ?>
 
 
 
@@ -34,3 +41,14 @@
     - Envoyer vers une page de modification de message      
     - re poster le message ou juste le modifier dans la bdd       save()
   -->
+
+
+  <!-- variable pour l'id de l'user $_SESSION['id_user'] 
+if($_SESSION['id_user'] === $message->author_id){ ?>
+  <p><?php echo $message->message; ?></p><a href="index.php?action=form_modify_message">modify message</a>
+}else{
+  <h3><?php echo $_SESSION['id_user']; ?></h3>
+            <p><?php echo $message->message; ?></p> 
+        </div>
+}
+-->
