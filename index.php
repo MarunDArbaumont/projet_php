@@ -41,7 +41,7 @@ if ($action === 'home')
 {
 	$messages = Message::getAll();
 }
-elseif ($action === 'form_login'.$messages)
+elseif ($action === 'form_login')
 {}
 elseif ($action === 'login')
 {
@@ -76,7 +76,7 @@ elseif($action === 'post_message')
 }
 elseif($action === 'form_modify_message')
 {}
-elseif($action === 'modify_message')
+elseif($action === 'modify_message' && $id_message === $message->id)
 {
 	// modifier le message en bdd
 	$user = Message::getOne($_POST['message']);;
