@@ -14,13 +14,13 @@
       </form>
       <br><br>
 
-      <?php if (!empty($messages)) { ?>
+      <?php if (!empty($message)) { ?>
         Messages :<br>
-        <?php foreach ($messages as $message) { 
+        <?php foreach ($message as $message) { 
           if($_SESSION['id_user'] === $message->author_id){ ?>
           <div>
             <h3> <?php echo $message->author_name ?> </h3>
-           <p><?php echo $message->message; ?></p><a href="index.php?action=form_modify_message">modify message</a>
+           <p><?php echo $message->message; ?></p><a href="index.php?action=form_modify_message&id=<?php echo $message->id ?>">modify message</a>
           </div>
           <?php } else{ ?>
             <div>

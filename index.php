@@ -39,7 +39,7 @@ if(isset($_SESSION['id_user']))
 // Controller
 if ($action === 'home')
 {
-	$messages = Message::getAll();
+	$message = Message::getAll();
 }
 elseif ($action === 'form_login')
 {}
@@ -78,17 +78,13 @@ elseif($action === 'form_modify_message')
 {}
 elseif($action === 'modify_message')
 {
-    $messageId = $_POST['message_id'];
-
-    // Récupérer le message à modifier depuis la base de données
-    $existingMessage = Message::find($messageId);
-
-    // Mettre à jour le message en BDD avec le nouveau texte
-    if ($existingMessage) {
-        $existingMessage->message = $_POST['message'];
-        $existingMessage->save();
-    }else{
-
+    if (isset($_GET['id'])) {
+        $message_id = $_GET['id'];
+        $message = Message::getOneById($message_id);
+		$message->message = $_POST['message'];
+		$message->save();
+    } else {
+        echo "Message ID not provided.";
     }
 }
 // Vue
