@@ -36,10 +36,10 @@
 
     <!-- pour ajouter le concept de modification de message
 
-    - Savoir que le message appartient à l'utilisateur connecté       $_GET('id') = $_POST('id');
+    - Savoir que le message appartient à l'utilisateur connecté
     - Afficher la possibilité de modifier le message      
     - Envoyer vers une page de modification de message      
-    - re poster le message ou juste le modifier dans la bdd       save()
+    - re poster le message ou juste le modifier dans la bdd
   -->
 
 

@@ -17,6 +17,9 @@ if (isset($_GET['action']))
 {
 	$action = $_GET['action'];
 	$title = ucfirst($action);
+}elseif(isset($_GET['action']) && isset($_GET['id_message'])){
+	$action = $_GET['action'];
+	$id_message = $_GET['id_message'];
 }
 else
 {
@@ -34,13 +37,13 @@ if(isset($_SESSION['id_user']))
 
 
 // Controller
-if ($action == 'home')
+if ($action === 'home')
 {
 	$messages = Message::getAll();
 }
-elseif ($action == 'form_login')
+elseif ($action === 'form_login'.$messages)
 {}
-elseif ($action == 'login')
+elseif ($action === 'login')
 {
 	$user = User::login($_POST['login'], $_POST['password']);
 	if (empty($user))
@@ -58,11 +61,11 @@ elseif ($action == 'register')
 	$user->passwd = $_POST['password'];
 	$user->save();
 }
-elseif ($action == 'logout')
+elseif ($action === 'logout')
 {
 	session_destroy();
 }
-elseif($action = 'post_message')
+elseif($action === 'post_message')
 {
 	// creer un message en BDD avec le texte fourni
 	$user = New Message();
@@ -71,9 +74,9 @@ elseif($action = 'post_message')
 	$user->author_name = $connected_user->login;
 	$user->save();
 }
-elseif($action == 'form_modify_message'.Message::getOne($_POST['message']))
+elseif($action === 'form_modify_message')
 {}
-elseif($action == 'modify_message')
+elseif($action === 'modify_message')
 {
 	// modifier le message en bdd
 	$user = Message::getOne($_POST['message']);;
