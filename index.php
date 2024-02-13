@@ -76,12 +76,20 @@ elseif($action === 'post_message')
 }
 elseif($action === 'form_modify_message')
 {}
-elseif($action === 'modify_message' && $id_message === $message->id)
+elseif($action === 'modify_message')
 {
-	// modifier le message en bdd
-	$user = Message::getOne($_POST['message']);;
-	$user->message = $_POST['message'];
-	$user->save();
+    $messageId = $_POST['message_id'];
+
+    // Récupérer le message à modifier depuis la base de données
+    $existingMessage = Message::find($messageId);
+
+    // Mettre à jour le message en BDD avec le nouveau texte
+    if ($existingMessage) {
+        $existingMessage->message = $_POST['message'];
+        $existingMessage->save();
+    }else{
+
+    }
 }
 // Vue
 include('template.php');
