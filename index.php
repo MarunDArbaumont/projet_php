@@ -68,9 +68,18 @@ elseif($action = 'post_message')
 	$user = New Message();
 	$user->author_id = $_SESSION['id_user'];
 	$user->message = $_POST['message'];
+	$user->author_name = $connected_user->login;
+	$user->save();
+}
+elseif($action == 'form_modify_message'.Message::getOne($_POST['message']))
+{}
+elseif($action == 'modify_message')
+{
+	// modifier le message en bdd
+	$user = Message::getOne($_POST['message']);;
+	$user->message = $_POST['message'];
 	$user->author_name = $_SESSION['login'];
 	$user->save();
 }
-
 // Vue
 include('template.php');

@@ -17,19 +17,30 @@
       <?php if (!empty($messages)) { ?>
         Messages :<br>
         <ul>
-        <?php foreach ($messages as $message) { ?>
-        <li> <?php echo $user->author_name.' : '.$message->message;  ?></li>
-        <?php }  ?>
-        </ul>
-      <?php }  ?>
-    <?php }  ?>
+        <?php foreach ($messages as $message){ 
+        if($_SESSION['id_user'] === $message->author_id){ ?>
+          <div>
+            <h3> <?php echo $message->author_name ?> </h3>
+           <p><?php echo $message->message; ?></p><a href="index.php?action=form_modify_message">modify message</a>
+          </div>
+          <?php } else{ ?>
+            <div>
+            <h3><?php echo $message->author_name; ?></h3>
+            <p><?php echo $message->message; ?></p> 
+        </div>
+          <?php } 
+        }  
+    }} ?>
 
 
 
 <!--
-    pour ajouter le nom d'utilisateur de l'auteur du message
+    pour ajouter le concept de message
 
-    - récupérer l'id_author du message
-    - retrouver le pseudo relier à l'id author
-    - affiché le pseudo (login)
+    - ajouter un formulaire qui pointe vers une action du controller
+    - creer la table
+    - creer la classe fille dans table.class.php
+    - enregister le message en BDD dans une action du controller
+    - creer une vue dans le dossier 'views' avec le nom de l'action
+    - afficher tout les message sur la page home
 -->

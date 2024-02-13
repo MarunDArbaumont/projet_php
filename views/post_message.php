@@ -1,5 +1,5 @@
     <main>
-        <h1>Message psoted</h1>  
+        <h1>Message posted</h1>  
     </main>
     Message succesfully posted<br><br>
     You can go back to home through this link : 
